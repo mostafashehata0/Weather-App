@@ -4,16 +4,6 @@
   padding: 0;
 }
 
-:root {
-  --blue-1: #3c429e;
-  --blue-2: #4c52ad;
-  --yellow-1: #fac742;
-  --white: #fff;
-  --grey-1: #ededed;
-  --shadow-dark: rgba(0, 0, 0, 0.3);
-  --shadow-light: rgba(255, 255, 255, 0.1);
-}
-
 .all {
   width: 100%;
   height: 100vh;
@@ -29,7 +19,24 @@
   background-color: #4c52ad;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
+/* =================================start submit button============================ */
+form {
+  position: relative;
+  top: 45px;
+}
 
+input {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: #4c52ad;
+  color: #ededed;
+  text-align: center;
+}
+
+/* ==========================end submit button =======================*/
+/*========================== start upper app=======================*/
 .upper-app {
   position: relative;
   overflow: hidden;
@@ -39,8 +46,9 @@
   border-top-right-radius: 20px;
 }
 .upper-app img {
-  filter: blur(0.3px);
-  height: 298px;
+  filter: blur(0.9px);
+  height: 100%;
+  -webkit-filter: blur(0.9px);
 }
 .data {
   position: absolute;
@@ -48,6 +56,7 @@
   left: 33%;
   color: white;
   z-index: 1;
+  font-weight: bold;
 }
 
 .location {
@@ -55,6 +64,8 @@
   letter-spacing: 0.2rem;
 }
 
+/* ==============================End upper app=====================*/
+/*=============================== start lower app============================== */
 .tempreature {
   font-size: 48px;
   font-weight: bold;
@@ -86,19 +97,4 @@
 .details p {
   font-size: 14px;
 }
-
-form {
-  position: relative;
-  top: 45px;
-}
-
-input {
-  width: 120px;
-  height: 30px;
-  border: none;
-  /* border-color: transparent; */
-  border-radius: 20px;
-  background-color: #4c52ad;
-  color: #ededed;
-  text-align: center;
-}
+/*=============================== End lower app============================== */

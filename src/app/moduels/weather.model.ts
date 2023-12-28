@@ -1,4 +1,5 @@
 export interface weatherData {
+  [x: string]: any;
   coord: Coord;
   weather: Weather[];
   base: string;

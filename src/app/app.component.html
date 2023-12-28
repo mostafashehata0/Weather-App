@@ -2,6 +2,7 @@
   class="all d-flex flex-column justify-content-cente align-items-center"
   *ngIf="weatherData"
 >
+  <!--=============================== start submit button=========================== -->
   <form (submit)="onSubmit()">
     <input
       type="text"
@@ -10,28 +11,43 @@
       placeholder="Search City"
     />
   </form>
+  <!--================================= End submit button=========================== -->
   <div class="containe">
+    <!--=============================== start upper app============================== -->
     <div class="upper-app">
       <img
         class="img-fluid"
-        *ngIf="((weatherData.main.temp_min - 32) * 5) / 9 < 15"
-        src="assets/winter-2896970_640.jpg"
+        *ngIf="weatherData.forecast.forecastday[0].day.avgtemp_c < 15"
+        src="assets/Winter-Forecast-US-Top-banner-650x275-opti.jpg"
       />
 
       <img
         class="img-fluid"
-        *ngIf="(weatherData.main.temp_min - 32) * 5 >= 15"
-        src="../assets/desert-landscape-with-cactuses-mountains-background_786255-255.jpg"
+        *ngIf="
+          weatherData.forecast.forecastday[0].day.avgtemp_c > 15 &&
+          weatherData.forecast.forecastday[0].day.avgtemp_c < 20
+        "
+        src="assets/elements-of-weather-and-instruments-measuring-them-2.jpg"
+      />
+      <img
+        class="img-fluid"
+        *ngIf="weatherData.forecast.forecastday[0].day.avgtemp_c >= 20"
+        src="assets/desert-landscape-with-cactuses-mountains-background_786255-255.jpg"
       />
       <div
         class="data d-flex flex-column justify-content-center align-items-center"
       >
-        <div class="location">{{ weatherData.name }}</div>
+        <div class="location">{{ weatherData.location.name }}</div>
         <div class="tempreature mt-3">
-          {{ ((weatherData.main.temp_min - 32) * 5) / 9 | number : "1.0-0" }} °C
+          {{
+            weatherData.forecast.forecastday[0].day.avgtemp_c | number : "1.0-0"
+          }}
+          °C
         </div>
       </div>
     </div>
+    <!--=============================== End upper app============================== -->
+    <!--=============================== start lower app============================== -->
     <div class="lower-app mt-2">
       <p>More Information</p>
       <div class="details row mt-3">
@@ -45,7 +61,10 @@
             <span>Min</span>
           </div>
           <p>
-            {{ ((weatherData.main.temp_min - 32) * 5) / 9 | number : "1.0-0" }}
+            {{
+              weatherData.forecast.forecastday[0].day.mintemp_c
+                | number : "1.0-0"
+            }}
             °C
           </p>
         </div>
@@ -55,7 +74,7 @@
             <span>Max</span>
           </div>
           <p>
-            {{ ((weatherData.main.temp_max - 32) * 5) / 9 | number : "1.0-0" }}
+            {{ weatherData.forecast.forecastday[0].day.maxtemp_c }}
             °C
           </p>
         </div>
@@ -70,7 +89,13 @@
             />
             <span>Humidity</span>
           </div>
-          <p>{{ weatherData.main.humidity | number : "1.0-0" }} %</p>
+          <p>
+            {{
+              weatherData.forecast.forecastday[0].day.avghumidity
+                | number : "1.0-0"
+            }}
+            %
+          </p>
         </div>
         <div
           class="wind d-flex justify-content-evenly align-items-center col-6"
@@ -83,10 +108,11 @@
             />
             <span>Wind</span>
           </div>
-          <p>{{ weatherData.wind.speed | number : "1.0-0" }} km/h</p>
+          <p>{{ weatherData.current.wind_kph | number : "1.0-0" }} km/h</p>
         </div>
       </div>
     </div>
+    <!--=============================== End lower app============================== -->
   </div>
 </div>
 

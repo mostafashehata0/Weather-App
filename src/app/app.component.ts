@@ -9,7 +9,8 @@ import { weatherData } from './moduels/weather.model';
 })
 export class AppComponent implements OnInit {
   constructor(private tempreature: TempreatureService) {}
-  weatherData?: weatherData;
+  weatherData?: any;
+  // current?:object;
   cityName: string = 'cairo';
   // ==============================
   ngOnInit(): void {
@@ -23,9 +24,10 @@ export class AppComponent implements OnInit {
   }
   // ===============================
   getWeatherData(cityName: string) {
-    this.tempreature.getCityWeather(cityName).subscribe({
+    this.tempreature.getWeather(cityName).subscribe({
       next: (response) => {
         this.weatherData = response;
+        // this.weatherData={this.current,forecast,forecastday}
         console.log(response);
       },
     });
